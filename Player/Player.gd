@@ -4,6 +4,8 @@ var acceleration = 500
 var max_speed = 140
 var friction = 500
 var velocity = Vector2.ZERO
+var roll_vector = Vector2.DOWN
+var roll_speed = 1.5
 
 enum {MOVE, ROLL, ATTACK}
 
@@ -25,7 +27,7 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta)
 		ROLL:
-			pass
+			roll_state(delta)
 		ATTACK:
 			attack_state(delta)
 	
@@ -40,24 +42,44 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 	
 	# to compansate for lag we multiply by delta
+	# we only updte the direction of the roll while we're moving. To avoid rolling in place.
 	if input_vector != Vector2.ZERO:
+		roll_vector = input_vector
 		animation_tree.set("parameters/Idle/blend_position", input_vector)
 		animation_tree.set("parameters/Run/blend_position", input_vector)
 		animation_tree.set("parameters/Attack/blend_position", input_vector)
+		animation_tree.set("parameters/Roll/blend_position", input_vector)
 		animation_state.travel("Run")
 		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:		
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		animation_state.travel("Idle")
-	
-	velocity = move_and_slide(velocity)
+		
+	move()
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
+			
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL	
+	
+func roll_state(delta):	
+	velocity = roll_vector * max_speed * roll_speed
+	animation_state.travel('Roll')
+	move()
 	
 func attack_state(delta):
-	velocity = Vector2.ZERO
+	#reducing the leftover speed after rolling to normal speed when moving else 0
+	velocity = roll_vector * max_speed
+	#code for else zero
 	animation_state.travel("Attack")
+	
+func move():
+	velocity = move_and_slide(velocity)	
+	
+func roll_animation_finished():
+	velocity = Vector2.ZERO
+	state = MOVE	
 	
 func attack_animation_finished():
 	state = MOVE
