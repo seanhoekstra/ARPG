@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 var acceleration = 500
 var max_speed = 140
-var friction = 500
+var friction = 600
 var velocity = Vector2.ZERO
-var roll_vector = Vector2.DOWN
+var roll_vector = Vector2.LEFT
 var roll_speed = 1.5
 
 enum {MOVE, ROLL, ATTACK}
@@ -69,16 +69,14 @@ func roll_state(delta):
 	move()
 	
 func attack_state(delta):
-	#reducing the leftover speed after rolling to normal speed when moving else 0
-	velocity = roll_vector * max_speed
-	#code for else zero
 	animation_state.travel("Attack")
 	
 func move():
 	velocity = move_and_slide(velocity)	
 	
 func roll_animation_finished():
-	velocity = Vector2.ZERO
+	#reducing the leftover speed after rolling to normal speed * 0.7
+	velocity = roll_vector * max_speed * 0.7
 	state = MOVE	
 	
 func attack_animation_finished():
