@@ -14,11 +14,11 @@ var state = MOVE
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
-
+onready var sword_hitbox = $HitboxPivot/SwordHitbox
 #only play the animation when the game is active
 func _ready():
 	animation_tree.active = true
-	
+	sword_hitbox.knockback_vector = roll_vector
 
 #It's hard to choose between process and physics process.
 #For now we use physiscs_process because the godot examples prescribe it.
@@ -45,6 +45,7 @@ func move_state(delta):
 	# we only updte the direction of the roll while we're moving. To avoid rolling in place.
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
+		sword_hitbox.knockback_vector = input_vector
 		animation_tree.set("parameters/Idle/blend_position", input_vector)
 		animation_tree.set("parameters/Run/blend_position", input_vector)
 		animation_tree.set("parameters/Attack/blend_position", input_vector)
