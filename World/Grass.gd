@@ -11,7 +11,7 @@ func create_grass_effect():
 	
 
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	create_grass_effect()
 	#remove the grass
 	queue_free()
