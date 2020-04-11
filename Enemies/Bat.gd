@@ -28,4 +28,11 @@ func _on_Hurtbox_area_entered(area):
 	
 	
 func _on_Stats_no_health():
+	#wait 0.2 second before clearing the enemy
+	var t = Timer.new()
+	t.set_wait_time(0.2)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
 	queue_free()
