@@ -4,7 +4,7 @@ export var acceleration = 500
 export var max_speed = 140
 export var friction = 600
 export var velocity = Vector2.ZERO
-export var roll_vector = Vector2.LEFT
+export var roll_vector = Vector2.DOWN
 export var roll_speed = 1.5
 
 enum {MOVE, ROLL, ATTACK}

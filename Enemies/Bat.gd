@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+
 var knockback = Vector2.ZERO
 var friction = 200
 var rng = RandomNumberGenerator.new()
@@ -35,4 +37,8 @@ func _on_Stats_no_health():
 	self.add_child(t)
 	t.start()
 	yield(t, "timeout")
+	
 	queue_free()
+	var enemy_death_effect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemy_death_effect)
+	enemy_death_effect.global_position = global_position
