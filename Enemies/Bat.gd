@@ -19,7 +19,7 @@ var state = IDLE
 var velocity = Vector2.ZERO
 
 onready var stats = $Stats
-onready var player_detection_zone = $PlayerDetecctionZone
+onready var player_detection_zone = $PlayerDetectionZone
 onready var sprite = $AnimatedSprite
 
 func _ready():
@@ -29,6 +29,12 @@ func _ready():
 	if my_random_number == 0:
 		$AnimatedSprite.animation = 'FlyBlue'
 		stats.max_health = 4
+		max_speed = 85
+		acceleration = 420
+		friction = 150 #more knockback to make hitting easier
+		#adjusts all bats not just the blue one. We can make different bats expanding a bat class to fix this
+		#found the "local to scene" option in the collisionshape, making different bats is still a good idea
+		player_detection_zone.collsion_shape_2d.shape.set_radius(200)
 	elif my_random_number in [1,2]:
 		$AnimatedSprite.animation = 'FlyGreen'
 	else:		
