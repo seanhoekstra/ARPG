@@ -568,16 +568,18 @@ position = Vector2( 48, 32 )
 [node name="Grass6" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 64, 32 )
 
-[node name="Bat" parent="YSort" instance=ExtResource( 8 )]
+[node name="Enemies" type="YSort" parent="YSort"]
+
+[node name="Bat" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 256, 144 )
 
-[node name="Bat2" parent="YSort" instance=ExtResource( 8 )]
+[node name="Bat2" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 176, 232 )
 
-[node name="Bat3" parent="YSort" instance=ExtResource( 8 )]
+[node name="Bat3" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 264, 224 )
 
-[node name="Bat4" parent="YSort" instance=ExtResource( 8 )]
+[node name="Bat4" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 192, 312 )
 
 [editable path="YSort/Player"]
