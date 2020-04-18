@@ -7,9 +7,13 @@ onready var health_diff = 0
 signal no_health
 
 func set_health(value):
-	health = value
+	if value > max_health:
+		health = max_health
+	else:
+		health = value
 	if health <= 0:
 		emit_signal("no_health")
+		
 
 func set_maxhealth(value):
 	health_diff = value - max_health
