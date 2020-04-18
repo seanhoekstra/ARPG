@@ -3,21 +3,24 @@ extends KinematicBody2D
 export var acceleration = 500
 export var max_speed = 140
 export var friction = 600
-export var velocity = Vector2.ZERO
-export var roll_vector = Vector2.DOWN
+var velocity = Vector2.ZERO
+var roll_vector = Vector2.DOWN
 export var roll_speed = 1.5
 
 enum {MOVE, ROLL, ATTACK}
 
 var state = MOVE
+var stats = PlayerStats
 
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var sword_hitbox = $HitboxPivot/SwordHitbox
+onready var hurtbox = $Hurtbox
 #only play the animation when the game is active
 
 func _ready():
+	stats.connect("no_health",self,"queue_free")
 	animation_tree.active = true
 	sword_hitbox.knockback_vector = roll_vector
 
@@ -64,9 +67,12 @@ func move_state(delta):
 		state = ROLL	
 	
 func roll_state(_delta):	
+	#if uncommented here and in roll finished this whould make the player invincible while rolling.
+	#can also be a variable vor an item or something
+	#hurtbox.invincible = true
 	velocity = roll_vector * max_speed * roll_speed
 	animation_state.travel('Roll')
-	move()
+	move()	
 	
 func attack_state(_delta):
 	animation_state.travel("Attack")
@@ -77,7 +83,14 @@ func move():
 func roll_animation_finished():
 	#reducing the leftover speed after rolling to normal speed * 0.7
 	velocity = roll_vector * max_speed * 0.7
+	#hurtbox.invincible = false
 	state = MOVE	
 	
 func attack_animation_finished():
 	state = MOVE
+
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -=1
+	hurtbox.start_invincibility(0.6)
+	hurtbox.create_hit_effect()

@@ -19,6 +19,10 @@ config/name="ARPG"
 run/main_scene="res://World.tscn"
 config/icon="res://GameIcon.png"
 
+[autoload]
+
+PlayerStats="*res://Player/PlayerStats.tscn"
+
 [display]
 
 window/size/width=640

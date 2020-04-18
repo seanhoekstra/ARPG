@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Bush2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Bush2.png" type="Texture" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -520,9 +521,13 @@ tile_data = PoolIntArray( -196587, 0, 4, -196586, 0, 196609, -196585, 0, 196609,
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 118, 74 )
 
+[node name="Sprite" parent="YSort/Player" index="0"]
+frame = 50
+
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 51 )
-parameters/Roll/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0.029062, 0.400578 )
+parameters/Roll/blend_position = Vector2( -0.00132102, -1.07457 )
 
 [node name="Camera2D" parent="YSort/Player" index="5"]
 limit_left = 0
@@ -583,6 +588,17 @@ position = Vector2( 264, 224 )
 position = Vector2( 192, 312 )
 
 [node name="Bat5" parent="YSort/Enemies" instance=ExtResource( 8 )]
-position = Vector2( 352, 216 )
+position = Vector2( 368, 208 )
+
+[node name="Bat6" parent="YSort/Enemies" instance=ExtResource( 8 )]
+position = Vector2( 312, 312 )
+
+[node name="Bush2" type="Sprite" parent="."]
+position = Vector2( 16, 168 )
+texture = ExtResource( 9 )
+
+[node name="Bush3" type="Sprite" parent="."]
+position = Vector2( 40, 192 )
+texture = ExtResource( 9 )
 
 [editable path="YSort/Player"]

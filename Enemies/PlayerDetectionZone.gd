@@ -2,7 +2,7 @@ extends Area2D
 
 var player = null
 
-onready var collsion_shape_2d = $CollisionShape2D
+onready var collision_shape_2d = $CollisionShape2D
 
 func can_see_player():
 	return player !=null
