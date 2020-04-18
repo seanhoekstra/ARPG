@@ -578,6 +578,9 @@ position = Vector2( 64, 32 )
 [node name="Bat" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 256, 144 )
 
+[node name="AnimatedSprite" parent="YSort/Enemies/Bat" index="0"]
+frame = 3
+
 [node name="Bat2" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 176, 232 )
 
@@ -602,3 +605,5 @@ position = Vector2( 40, 192 )
 texture = ExtResource( 9 )
 
 [editable path="YSort/Player"]
+
+[editable path="YSort/Enemies/Bat"]

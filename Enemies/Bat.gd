@@ -40,6 +40,13 @@ func _ready():
 		$AnimatedSprite.animation = 'FlyGreen'
 	else:		
 		$AnimatedSprite.animation = 'Fly'
+		
+	#randomly grow a bat by scale 1.5 and add 2 health	
+	my_random_number = rng.randi_range(0, 9)
+	if my_random_number == 0:
+		apply_scale(Vector2(1.5,1.5))	
+		stats.max_health += 2
+		
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO,friction * delta)
