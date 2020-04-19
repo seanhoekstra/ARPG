@@ -72,3 +72,7 @@ func _on_Stats_no_health():
 	yield(t, "timeout")
 	
 	queue_free()
+
+#to check if the attack animation is finished, does sent a ton of signals, kinda ugly
+func _on_AnimatedSprite_animation_finished():
+	pass # Replace with function body.
