@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SpeedboatNOTCCO.ogg-0aae22f4601be384f521ce0fb0e7d70b.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/SpeedboatNOTCCO.ogg"
+dest_files=[ "res://.import/SpeedboatNOTCCO.ogg-0aae22f4601be384f521ce0fb0e7d70b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
