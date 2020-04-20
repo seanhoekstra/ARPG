@@ -11,23 +11,23 @@
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
@@ -51,31 +51,31 @@ atlas = ExtResource( 6 )
 region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 5 )
 region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 5 )
 region = Rect2( 48, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "FlyBlue",
-"speed": 14.0
+"name": "Fly",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
@@ -84,14 +84,14 @@ animations = [ {
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "Fly",
-"speed": 10.0
+"name": "FlyBlue",
+"speed": 14.0
 } ]
 
 [sub_resource type="CircleShape2D" id=17]
 radius = 4.0
 
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=18]
 radius = 6.0
 height = 7.0
 
@@ -126,7 +126,7 @@ collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -15 )
-shape = SubResource( 21 )
+shape = SubResource( 18 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 8 )]
 

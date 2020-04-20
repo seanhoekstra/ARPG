@@ -1,10 +1,11 @@
 extends Node
 
 export(int) var max_health = 1 setget set_maxhealth
-onready var health = max_health setget set_health
-onready var health_diff = 0
+var health = max_health setget set_health
  
 signal no_health
+signal health_changed(value)
+signal max_health_changed(value)
 
 func set_health(value):
 	if value > max_health:
@@ -13,12 +14,12 @@ func set_health(value):
 		health = value
 	if health <= 0:
 		emit_signal("no_health")
+	emit_signal("health_changed", health)
 		
 
 func set_maxhealth(value):
+	var health_diff = 0
 	health_diff = value - max_health
 	max_health = value	
-	if health == null:
-		health = max_health
-	else: 
-		health += health_diff
+	self.health += health_diff
+	emit_signal("max_health_changed", max_health)

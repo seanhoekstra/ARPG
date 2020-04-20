@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=4]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
-[ext_resource path="res://World/Bush2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/BushBrown.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Music and Sounds/SpeedboatNOTCCO.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Enemies/Minotaur.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Tree.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -522,15 +524,15 @@ tile_data = PoolIntArray( -196587, 0, 4, -196586, 0, 196609, -196585, 0, 196609,
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 56, 64 )
 
-[node name="Sprite" parent="YSort/Player" index="0"]
+[node name="Sprite" parent="YSort/Player" index="1"]
 frame = 50
 
-[node name="AnimationTree" parent="YSort/Player" index="3"]
+[node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 51 )
 parameters/Idle/blend_position = Vector2( 0.029062, 0.400578 )
 parameters/Roll/blend_position = Vector2( -0.00132102, -1.07457 )
 
-[node name="Camera2D" parent="YSort/Player" index="5"]
+[node name="Camera2D" parent="YSort/Player" index="6"]
 limit_left = 0
 limit_top = 0
 limit_right = 1280
@@ -549,16 +551,16 @@ position = Vector2( 204, 19 )
 position = Vector2( 284, 85 )
 
 [node name="Bush4" parent="YSort/Bushes" instance=ExtResource( 7 )]
-position = Vector2( 208, 128 )
+position = Vector2( 16, 173 )
 
 [node name="Bush5" parent="YSort/Bushes" instance=ExtResource( 7 )]
-position = Vector2( 144, 168 )
+position = Vector2( 42, 195 )
 
 [node name="Bush6" parent="YSort/Bushes" instance=ExtResource( 7 )]
-position = Vector2( 16, 168 )
+position = Vector2( 163, 152 )
 
 [node name="Bush7" parent="YSort/Bushes" instance=ExtResource( 7 )]
-position = Vector2( 40, 192 )
+position = Vector2( 196, 126 )
 
 [node name="Grass" type="YSort" parent="YSort"]
 
@@ -585,9 +587,6 @@ position = Vector2( 64, 32 )
 [node name="Bat" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 256, 144 )
 
-[node name="AnimatedSprite" parent="YSort/Enemies/Bat" index="0"]
-frame = 2
-
 [node name="Bat2" parent="YSort/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 176, 232 )
 
@@ -606,20 +605,27 @@ position = Vector2( 312, 312 )
 [node name="Minotaur" parent="YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 1048, 216 )
 
-[node name="AnimatedSprite" parent="YSort/Enemies/Minotaur" index="0"]
-frame = 2
-
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -30.0
 autoplay = true
 
+[node name="HealthUI" parent="." instance=ExtResource( 11 )]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 65.0
+margin_bottom = 15.0
+
+[node name="Tree" parent="." instance=ExtResource( 12 )]
+position = Vector2( 335, 43 )
+
+[node name="Tree2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 379, 70 )
+
+[node name="Tree3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 432, 41 )
+
+[node name="Tree4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 454, 61 )
+
 [editable path="YSort/Player"]
-
-[editable path="YSort/Bushes/Bush"]
-
-[editable path="YSort/Bushes/Bush5"]
-
-[editable path="YSort/Enemies/Bat"]
-
-[editable path="YSort/Enemies/Minotaur"]

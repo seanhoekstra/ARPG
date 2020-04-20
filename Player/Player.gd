@@ -89,8 +89,8 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = MOVE
 
-
-func _on_Hurtbox_area_entered(area):
+#can change 1 to area.damage
+func _on_Hurtbox_area_entered(_area):
 	stats.health -=1
 	hurtbox.start_invincibility(0.6)
 	hurtbox.create_hit_effect()
